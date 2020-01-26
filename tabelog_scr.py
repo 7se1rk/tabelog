@@ -85,15 +85,6 @@ def syosai_scrape(syosai_url):
     result[14] = soup.find("span",{"class" : "linktree__parent-target-text"}).string # 最寄り駅取得
 
     return result
-#Lineにメッセージで通知
-def line(me):
-    line_notify_token = 'YdJcttpCDeFblh7gnu2bh9qiRYMR5DfLJXpKaL34HaD'
-    line_notify_api = 'https://notify-api.line.me/api/notify'
-    message = '\n' + me
-    payload = {'message': message}
-    headers = {'Authorization': 'Bearer ' + line_notify_token}
-    line_notify = requests.post(line_notify_api, data=payload, headers=headers)
-
 
 
 if __name__ == "__main__":
