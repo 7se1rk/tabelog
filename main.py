@@ -4,6 +4,15 @@ import sys
 import json
 import scrape as sc
 from argparse import ArgumentParser
+import pytz
+import certifi
+import requests
+import json
+from bs4 import BeautifulSoup
+import time
+from selenium import webdriver
+import chromedriver_binary
+import re
  
 from flask import Flask, request, abort
 from linebot import (
