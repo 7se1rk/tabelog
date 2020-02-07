@@ -15,6 +15,7 @@ import chromedriver_binary
 import re
  
 from flask import Flask, request, abort
+import os
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -27,17 +28,12 @@ from linebot.models import (
  
 app = Flask(__name__)
  
-channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
-channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
-if channel_secret is None:
-    print('Specify LINE_CHANNEL_SECRET as environment variable.')
-    sys.exit(1)
-if channel_access_token is None:
-    print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
-    sys.exit(1)
+SECRET = os.environ("YOUR_CHANNEL_SECRET")
+ACCESS_TOKEN = os.environ("YOUR_CHANNEL_ACCESS_TOKEN")
+
  
-line_bot_api = LineBotApi(channel_access_token)
-handler = WebhookHandler(channel_secret)
+line_bot_api = LineBotApi(ACCESS_TOKEN)
+handler = WebhookHandler(SECRET)
  
  
 @app.route("/callback", methods=['POST'])
